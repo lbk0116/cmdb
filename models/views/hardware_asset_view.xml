@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="cmdb_property_metadata_tree_view">
+            <field name="name">property_metadata.tree</field>
+            <field name="model">cmdb.property_metadata</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id" string="资产元数据id"/>
+                    <field name="name" string="名称"/>
+                    <field name="type" string="类型"/>
+                    <field name="is_parent" string="是否父类"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cmdb_property_metadata_form_view">
+            <field name="name">property_metadata.form</field>
+            <field name="model">cmdb.property_metadata</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <group>
+	                    <field name="id" string="资产元数据id"/>
+	                    <field name="name" string="名称"/>
+	                    <field name="type" string="类型"/>
+	                    <field name="is_parent" string="是否父类"/>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cmdb_property_metadata_graph">
+            <field name="name">cmdb.property_metadata_graph</field>
+            <field name="model">cmdb.property_metadata</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <graph string="cmdb property metadata graph" type="bar" >
+                    <field name="name" string="名称"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="cmdb_device_tree_view">
+            <field name="name">device.tree</field>
+            <field name="model">cmdb.device</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id" string="资产id"/>
+                    <field name="name" string="设备名称"/>
+                    <field name="manage_ip" string="设备登录地址"/>
+                    <field name="type_id" string="设备类型"/>
+                    <field name="manufacturer_id" string="厂商"/>
+                    <!-- <field name="sn" string="序列号"/>
+                    <field name="model_id" string="型号"/>
+                    <field name="soft_verison" string="软件版本"/>
+                    <field name="device_location" string="设备位置"/>
+                    <field name="nas_pipe" string="NAS纳管"/>
+                    <field name="som_pipe" string="SOM纳管"/>
+                    <field name="direct_login" string="直连登录"/>
+                    <field name="floor" string="楼层"/>
+                    <field name="lab_num" string="机房号"/>
+                    <field name="cab_num" string="机柜编号"/>
+                    <field name="cab_start_u" string="机柜起始U位"/>
+                    <field name="inline_owner" string="行内归属人"/>
+                    <field name="power_num1" string="电源号-1"/>
+                    <field name="power_num2" string="电源号-2"/>
+                    <field name="power_num3" string="电源号-3"/>
+                    <field name="power_num4" string="电源号-4"/>
+                    <field name="purchase_date" string="设备购入时间"/>
+                    <field name="manage_ip" string="管理IP"/>
+                    <field name="manage_type" string="管理类型"/>
+                    <field name="username" string="用户名"/>
+                    <field name="password" string="密码"/>
+                    <field name="status" string="状态"/>
+                    <field name="area_id" string="所在地域"/>
+                    <field name="building_id" string="所在楼宇"/>
+                    <field name="room_id" string="所在机房"/>
+                    <field name="cabinet_id" string="所在机柜"/>
+                    <field name="position_u_id" string="所在U位"/>
+                    <field name="occupy" string="占用U位数"/>
+                    <field name="department_id" string="所属部门"/>
+                    <field name="responsible" string="责任人"/>
+                    <field name="maintenance_start" string="维保起始日期"/>
+                    <field name="maintenance_end" string="维保终止日期"/>
+                    <field name="contract_purchase_id" string="采购合同"/>
+                    <field name="comment" string="备注"/>
+                    <field name="chassis_id" string="所属机箱"/> -->
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cmdb_device_search_view">
+            <field name="name">device.search</field>
+            <field name="model">cmdb.device</field>
+            <field name="arch" type="xml">
+                <search  string="Search_device">
+                    <group expand="0" string="分组">
+                        <filter string="设备名称" name="name" context="{'group_by':'name'}"/>
+                        <filter string="厂商" name="manufacturer_id" context="{'group_by':'manufacturer_id'}"/>
+                        <filter string="设备类型" name="type_id" context="{'group_by':'type_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cmdb_device_form_view">
+            <field name="name">device.form</field>
+            <field name="model">cmdb.device</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <group>
+                    <group>
+	                    <field name="id" string="资产id"/>
+	                    <field name="name" string="设备名称"/>
+	                    <field name="manage_ip" string="设备登录地址"/>
+	                    <field name="type_id" string="设备类型"/>
+	                    <field name="manufacturer_id" string="厂商"/>
+	                    <field name="sn" string="序列号"/>
+	                    <field name="model_id" string="型号"/>
+	                    <field name="soft_verison" string="软件版本"/>
+	                    <field name="inline_owner" string="行内归属人"/>
+                        <field name="purchase_date" string="设备购入时间"/>
+                        <field name="manage_ip" string="管理IP"/>
+                        <field name="manage_type" string="管理类型"/>
+                    </group>
+                    <group>
+	                    <field name="username" string="用户名"/>
+	                    <field name="password" string="密码"/>
+	                    <field name="status" string="状态"/>
+	                    <field name="area_id" string="所在地域"/>
+	                    <field name="building_id" string="所在楼宇"/>
+	                    <field name="room_id" string="所在机房"/>
+	                    <field name="cabinet_id" string="所在机柜"/>
+	                    <field name="position_u_id" domain="[('cabinet_id', '=', cabinet_id)]" string="所在U位" options='{"no_open":True, "no_create":1, "no_create_edit":1}'/>
+	                    <field name="used_u" string="占用U位数"/>
+	                    <field name="department_id" string="所属部门"/>
+	                    <field name="responsible" string="责任人"/>
+	                    <field name="contract_purchase_id" string="采购合同"/>
+
+	                    <field name="chassis_id" string="所属机箱"/>
+	                    <field name="maintenance_start" string="维保起始日期"/>
+	                    <field name="maintenance_end" string="维保终止日期"/>
+                    </group>
+                	</group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cmdb_device_graph">
+            <field name="name">cmdb.device_graph</field>
+            <field name="model">cmdb.device</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <graph string="cmdb device graph" type="bar" >
+                    <field name="name" string="设备名称"/>
+                </graph>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="cmdb_cabinet_tree_view">
+            <field name="name">cabinet.tree</field>
+            <field name="model">cmdb.cabinet</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id" string="机柜表id"/>
+                    <field name="name" string="名称"/>
+                    <field name="counts_u" string="总U数"/>
+                    <field name="area_id" string="所在地域"/>
+                    <field name="building_id" string="所在楼宇"/>
+                    <field name="room_id" string="所在机房"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cmdb_cabinet_search_view">
+            <field name="name">cabinet.search</field>
+            <field name="model">cmdb.cabinet</field>
+            <field name="arch" type="xml">
+                <search  string="Search_cabinet">
+                    <group expand="0" string="分组">
+                        <filter string="所在地域" name="area_id" context="{'group_by':'area_id'}"/>
+                        <filter string="所在楼宇" name="building_id" context="{'group_by':'building_id'}"/>
+                        <filter string="所在机房" name="room_id" context="{'group_by':'room_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cmdb_cabinet_form_view">
+            <field name="name">cabinet.form</field>
+            <field name="model">cmdb.cabinet</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <group>
+	                    <field name="id" string="机柜表id"/>
+	                    <field name="name" string="名称"/>
+	                    <field name="counts_u" string="总U数"/>
+	                    <field name="area_id" string="所在地域"/>
+	                    <field name="building_id" string="所在楼宇"/>
+	                    <field name="room_id" string="所在机房"/>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cmdb_cabinet_graph">
+            <field name="name">cmdb.cabinet_graph</field>
+            <field name="model">cmdb.cabinet</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <graph string="cmdb cabinet graph" type="bar" >
+                    <field name="name" string="名称"/>
+                </graph>
+            </field>
+        </record>
+
+
+		<record model="ir.ui.view" id="cmdb_position_u_tree_view">
+            <field name="name">position_u.tree</field>
+            <field name="model">cmdb.position_u</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id" string="U位表id"/>
+                    <field name="name" string="名称"/>
+                    <field name="status" string="状态"/>
+                    <field name="cabinet_id" string="所在机柜"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cmdb_position_u_search_view">
+            <field name="name">position_u.search</field>
+            <field name="model">cmdb.position_u</field>
+            <field name="arch" type="xml">
+                <search  string="Search_position">
+                    <group expand="0" string="分组">
+                        <filter string="所在机柜" name="cabinet_id" context="{'group_by':'cabinet_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cmdb_position_u_form_view">
+            <field name="name">position_u.form</field>
+            <field name="model">cmdb.position_u</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <group>
+	                    <field name="id" string="U位表id"/>
+	                    <field name="name" string="名称"/>
+	                    <field name="status" string="状态"/>
+	                    <field name="cabinet_id" string="所在机柜"/>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cmdb_position_u_graph">
+            <field name="name">cmdb.position_u_graph</field>
+            <field name="model">cmdb.position_u</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <graph string="cmdb position u graph" type="bar" >
+                    <field name="name" string="名称"/>
+                </graph>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="cmdb_contract_purchase_tree_view">
+            <field name="name">contract_purchase.tree</field>
+            <field name="model">cmdb.contract_purchase</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id" string="采购合同表id"/>
+                    <field name="name" string="名称"/>
+                    <field name="number" string="合同编号"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cmdb_contract_purchase_form_view">
+            <field name="name">contract_purchase.form</field>
+            <field name="model">cmdb.contract_purchase</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                    <group>
+                    <field name="id" string="采购合同表id"/>
+                    <field name="name" string="名称"/>
+                    <field name="number" string="合同编号"/>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="cmdb_contract_purchase_graph">
+            <field name="name">cmdb.contract_purchase_graph</field>
+            <field name="model">cmdb.contract_purchase</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <graph string="cmdb contract purchase graph" type="bar" >
+                    <field name="name" string="名称"/>
+                </graph>
+            </field>
+        </record>
+
+
+        <!--<record model="ir.ui.view" id="cmdb_property_port_tree_view">-->
+            <!--<field name="name">property_port.tree</field>-->
+            <!--<field name="model">cmdb.property_port</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<tree>-->
+                    <!--<field name="id" string="交换机ID"/>-->
+                    <!--<field name="switch" string="交换机"/>-->
+                    <!--<field name="port" string="端口"/>-->
+                    <!--<field name="aggregation_port" string="聚合端口"/>-->
+                    <!--<field name="host_name" string="主机名"/>-->
+                    <!--&lt;!&ndash; <field name="vlan_id" string="VLAN-ID"/>-->
+                    <!--<field name="app_sys" string="应用系统"/>-->
+                    <!--<field name="host_ip" string="主机IP地址"/>-->
+                    <!--<field name="bt_sv_vip_address" string="BT/SV/VIP地址"/>-->
+                    <!--<field name="server_info" string="服务器端信息点"/>-->
+                    <!--<field name="switch_info" string="交换机端信息点"/>-->
+                    <!--<field name="comment" string="备注"/>-->
+                    <!--<field name="module" string="Module"/> &ndash;&gt;-->
+                    <!--<field name="last_upd" string="更新时间"/>-->
+                <!--</tree>-->
+            <!--</field>-->
+        <!--</record>-->
+        <!--<record model="ir.ui.view" id="cmdb_property_port_search_view">-->
+            <!--<field name="name">property_prot.search</field>-->
+            <!--<field name="model">cmdb.property_port</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<search  string="Search_property_port">-->
+                    <!--<group expand="0" string="分组">-->
+                        <!--<filter string="交换机" name="switch" context="{'group_by':'switch'}"/>-->
+                        <!--<filter string="聚合端口" name="aggregation_port" context="{'group_by':'aggregation_port'}"/>-->
+                    <!--</group>-->
+                <!--</search>-->
+            <!--</field>-->
+        <!--</record>-->
+        <!--<record model="ir.ui.view" id="cmdb_property_port_form_view">-->
+            <!--<field name="name">property_port.form</field>-->
+            <!--<field name="model">cmdb.property_port</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<form>-->
+                    <!--<sheet>-->
+                    <!--<group>-->
+                        <!--<group>-->
+                        <!--<field name="id" string="交换机ID"/>-->
+	                    <!--<field name="switch" string="交换机"/>-->
+	                    <!--<field name="port" string="端口"/>-->
+	                    <!--<field name="aggregation_port" string="聚合端口"/>-->
+	                    <!--<field name="vlan_id" string="VLAN-ID"/>-->
+	                    <!--<field name="app_sys" string="应用系统"/>-->
+	                    <!--<field name="host_name" string="主机名"/>-->
+                        <!--</group>-->
+                        <!--<group>-->
+	                    <!--<field name="host_ip" string="主机IP地址"/>-->
+	                    <!--<field name="bt_sv_vip_address" string="BT/SV/VIP地址"/>-->
+	                    <!--<field name="server_info" string="服务器端信息点"/>-->
+	                    <!--<field name="switch_info" string="交换机端信息点"/>-->
+	                    <!--<field name="comment" string="备注"/>-->
+	                    <!--<field name="module" string="Module"/>-->
+	                    <!--<field name="last_upd" string="更新时间"/>-->
+                        <!--</group>-->
+                    <!--</group>-->
+                    <!--</sheet>-->
+                <!--</form>-->
+            <!--</field>-->
+        <!--</record>-->
+        <!--<record model="ir.ui.view" id="cmdb_property_port_graph">-->
+            <!--<field name="name">cmdb.property_port_graph</field>-->
+            <!--<field name="model">cmdb.property_port</field>-->
+            <!--<field name="type">graph</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<graph string="cmdb property port graph" type="bar" >-->
+                    <!--<field name="switch" string="交换机"/>-->
+                <!--</graph>-->
+            <!--</field>-->
+        <!--</record>-->
+
+
+        <!--<record model="ir.ui.view" id="cmdb_ip_addr_tree_view">-->
+            <!--<field name="name">ip_addr.tree</field>-->
+            <!--<field name="model">cmdb.ip_addr</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<tree>-->
+                    <!--<field name="ip_addr" string="IP地址(返回)"/>-->
+                    <!--<field name="host_name" string="主机名"/>-->
+                    <!--<field name="ip_addr_type" string="IP地址类型"/>-->
+                    <!--<field name="vlan" string="Vlan"/>-->
+                    <!--<field name="app_sys" string="所属系统"/>-->
+                    <!--<field name="adimn" string="管理员"/>-->
+                    <!--<field name="comment" string="备注"/>-->
+                <!--</tree>-->
+            <!--</field>-->
+        <!--</record>-->
+        <!--<record model="ir.ui.view" id="cmdb_ip_addr_search_view">-->
+            <!--<field name="name">ip_addr.search</field>-->
+            <!--<field name="model">cmdb.ip_addr</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<search  string="Search_ip_addr">-->
+                    <!--<group expand="0" string="分组">-->
+                        <!--<filter string="Vlan" name="vlan" context="{'group_by':'vlan'}"/>-->
+                        <!--<filter string="所属系统" name="app_sys" context="{'group_by':'app_sys'}"/>-->
+                    <!--</group>-->
+                <!--</search>-->
+            <!--</field>-->
+        <!--</record>-->
+        <!--<record model="ir.ui.view" id="cmdb_ip_addr_form_view">-->
+            <!--<field name="name">ip_addr.form</field>-->
+            <!--<field name="model">cmdb.ip_addr</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<form>-->
+                    <!--<sheet>-->
+                        <!--<group>-->
+                            <!--<field name="ip_addr" string="IP地址(返回)"/>-->
+                            <!--<field name="host_name" string="主机名"/>-->
+                            <!--<field name="ip_addr_type" string="IP地址类型"/>-->
+                            <!--<field name="vlan" string="Vlan"/>-->
+                            <!--<field name="app_sys" string="所属系统"/>-->
+                            <!--<field name="adimn" string="管理员"/>-->
+                            <!--<field name="comment" string="备注"/>-->
+                        <!--</group>-->
+                    <!--</sheet>-->
+                <!--</form>-->
+            <!--</field>-->
+        <!--</record>-->
+        <!--<record model="ir.ui.view" id="cmdb_ip_addr_graph">-->
+            <!--<field name="name">cmdb.ip_addr_graph</field>-->
+            <!--<field name="model">cmdb.ip_addr</field>-->
+            <!--<field name="type">graph</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<graph string="cmdb ip addr graph" type="bar" >-->
+                    <!--<field name="host_name" string="主机名"/>-->
+                <!--</graph>-->
+            <!--</field>-->
+        <!--</record>-->
+    </data>
+</openerp>

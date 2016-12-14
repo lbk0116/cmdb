@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+        <record id="ip_group_action" model="ir.actions.act_window" >
+            <field name="name">IP地址组表</field>
+            <field name="res_model">cmdb.ip_group</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+        <record id="ip_allocation_pool_action" model="ir.actions.act_window" >
+            <field name="name">可分配IP地址池表</field>
+            <field name="res_model">cmdb.ip_allocation_pool</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+        <record id="availability_range_action" model="ir.actions.act_window" >
+            <field name="name">可用IP地址范围表</field>
+            <field name="res_model">cmdb.availability_range</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+        <record id="ip_allocation_action" model="ir.actions.act_window" >
+            <field name="name">已分配IP地址表</field>
+            <field name="res_model">cmdb.ip_allocation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+
+
+		<menuitem id="ip_related_menu" name="ip相关表" parent="main_cmdb_menu"/>
+
+
+        <menuitem id="ip_group_menu" name="IP地址组表" parent="ip_related_menu" action="ip_group_action" sequence="1" />
+        <menuitem id="ip_allocation_pool_menu" name="可分配IP地址池表" parent="ip_related_menu" action="ip_allocation_pool_action" sequence="2"/>
+        <menuitem id="availability_range_menu" name="可用IP地址范围表" parent="ip_related_menu" action="availability_range_action" sequence="3"/>
+        <menuitem id="ip_allocation_menu" name="已分配IP地址表" parent="ip_related_menu" action="ip_allocation_action" sequence="4"/>
+
+    </data>
+</openerp>

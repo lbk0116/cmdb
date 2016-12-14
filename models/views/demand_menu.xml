@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+        <record id="order_action" model="ir.actions.act_window" >
+            <field name="name">需求单表</field>
+            <field name="res_model">cmdb.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+        <record id="resource_apply_action" model="ir.actions.act_window" >
+            <field name="name">资源申请表 </field>
+            <field name="res_model">cmdb.resource_apply</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+        <record id="resource_apply_line_action" model="ir.actions.act_window" >
+            <field name="name">资源申请行表</field>
+            <field name="res_model">cmdb.resource_apply_line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+        <record id="template_action" model="ir.actions.act_window" >
+            <field name="name">模板表</field>
+            <field name="res_model">cmdb.template</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+
+		<menuitem id="demand_related_menu" name="需求相关表" parent="main_cmdb_menu"/>
+
+        <menuitem id="order_menu" name="需求单表" parent="demand_related_menu" action="order_action" sequence="2"/>
+        <menuitem id="resource_apply_menu" name="资源申请表" parent="demand_related_menu" action="resource_apply_action" sequence="3"/>
+        <menuitem id="resource_apply_line_menu" name="资源申请行表" parent="demand_related_menu" action="resource_apply_line_action" sequence="4"/>
+        <menuitem id="template_menu" name="模板表" parent="demand_related_menu" action="template_action" sequence="4"/>
+
+    </data>
+</openerp>

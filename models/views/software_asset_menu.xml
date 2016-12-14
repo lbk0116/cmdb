@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+        <record id="software_action" model="ir.actions.act_window" >
+            <field name="name">应用软件表</field>
+            <field name="res_model">cmdb.software</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+        <record id="os_instance_action" model="ir.actions.act_window" >
+            <field name="name">操作系统实例表</field>
+            <field name="res_model">cmdb.os_instance</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+        <record id="software_instance_action" model="ir.actions.act_window" >
+            <field name="name">应用软件实例表</field>
+            <field name="res_model">cmdb.software_instance</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+        <record id="interface_action" model="ir.actions.act_window" >
+            <field name="name">接口表</field>
+            <field name="res_model">cmdb.interface</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+        <record id="route_action" model="ir.actions.act_window" >
+            <field name="name">路由表</field>
+            <field name="res_model">cmdb.route</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+        <record id="arp_action" model="ir.actions.act_window" >
+            <field name="name">ARP表</field>
+            <field name="res_model">cmdb.arp</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+        <record id="nat_action" model="ir.actions.act_window" >
+            <field name="name">NAT表</field>
+            <field name="res_model">cmdb.nat</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+        <record id="mac_action" model="ir.actions.act_window" >
+            <field name="name">MAC表</field>
+            <field name="res_model">cmdb.mac</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+        <record id="vlan_action" model="ir.actions.act_window" >
+            <field name="name">vlan表</field>
+            <field name="res_model">cmdb.vlan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+        <record id="license_action" model="ir.actions.act_window" >
+            <field name="name">license信息表</field>
+            <field name="res_model">cmdb.license</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+
+
+
+		<menuitem id="software_asset_related_menu" name="软件资产相关表" parent="main_cmdb_menu"/>
+
+        <menuitem id="software_menu" name="应用软件表" parent="software_asset_related_menu" action="software_action" sequence="1"/>
+        <menuitem id="os_instance_menu" name="操作系统实例表" parent="software_asset_related_menu" action="os_instance_action" sequence="2"/>
+        <menuitem id="software_instance" name="应用软件实例表" parent="software_asset_related_menu" action="software_instance_action" sequence="3"/>
+        <menuitem id="interface_menu" name="接口表" parent="software_asset_related_menu" action="interface_action" sequence="4"/>
+        <menuitem id="route_menu" name="路由表" parent="software_asset_related_menu" action="route_action" sequence="5"/>
+        <menuitem id="arp_menu" name="ARP表" parent="software_asset_related_menu" action="arp_action" sequence="6"/>
+        <menuitem id="nat_menu" name="NAT表" parent="software_asset_related_menu" action="nat_action" sequence="7"/>
+        <menuitem id="mac_menu" name="MAC表" parent="software_asset_related_menu" action="mac_action" sequence="8"/>
+        <menuitem id="vlan_menu" name="vlan表" parent="software_asset_related_menu" action="vlan_action" sequence="9"/>
+        <menuitem id="license_menu" name="license信息表" parent="software_asset_related_menu" action="license_action" sequence="10"/>
+
+    </data>
+</openerp>
