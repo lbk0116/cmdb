@@ -233,7 +233,7 @@ class port_channel(models.Model):
 #     pass
 # OSPF邻接表
 class ospf_neighbor(models.Model):
-    _name = 'cmdbospf_neighbor'
+    _name = 'cmdb.ospf_neighbor'
 
     os_instance_id = fields.Many2one('cmdb.os_instance', string='设备')
     neighbor_router_ip = fields.Char()
@@ -329,7 +329,7 @@ class license_status(models.Model):
 
 #生成树logical ports数量信息表
 class stp_logical_port(models.Model):
-    _name = 'stp_logical_port'
+    _name = 'cmdb.stp_logical_port'
 
     os_instance_id = fields.Many2one('cmdb.os_instance', string='设备')
     logical_ports_available = fields.Integer(string='支持的逻辑端口总数')
@@ -366,8 +366,8 @@ class environment_module_power_supply(models.Model):
     module_power_status = fields.Char(string='状态')
 
 #环境电源输入表
-class environmet_power_supply(models.Model):
-    _name = 'cmdb.environmet_power_supply'
+class environment_power_supply(models.Model):
+    _name = 'cmdb.environment_power_supply'
 
     os_instance_id =  fields.Many2one('cmdb.os_instance', string='设备')
     power_supply_number = fields.Integer(string='电源编号')

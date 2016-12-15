@@ -14,5 +14,5 @@ from . import demand
 from . import hardware_asset
 from . import ip
 from . import software_asset
-# from . import sw
+from . import sw
 
