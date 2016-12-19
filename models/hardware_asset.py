@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-from openerp import fields
+from openerp import fields,api
 from openerp import models
+
 
 #资产元数据表
 class property_metadata(models.Model):
@@ -46,6 +47,22 @@ class device(models.Model):
     chassis_id = fields.Many2one("cmdb.device", string="所属机箱")
     business_system_ids = fields.Char(string='关联的业务系统列表')
 
+    @api.multi
+    def pop_window(self):
+        form_id = self.env['ir.model.data'].search([('name','=','cmdb_device_command_form_view'),('module','=','cmdb')]).res_id
+        tree_id = self.env['ir.model.data'].search([('name','=','cmdb_device_command_tree_view'),('module','=','cmdb')]).res_id
+        value = {
+            'name': ('选择查看信息'),
+            'res_model': 'cmdb.show_infomatiaon',
+            'views': [[form_id, 'form']],
+           # 'view_mode':'tree',
+            'type': 'ir.actions.act_window',
+            # 'domain': [('id','=',1)],
+            'target':'new'
+        }
+        return value
+
+
 #机柜表
 class cabinet(models.Model):
     _rec_name = "name"
@@ -72,3 +89,17 @@ class contract_purchase(models.Model):
 
     name = fields.Char(string="名称")
     number = fields.Char(string="合同编号")
+
+# 执行命令
+class show_infomatiaon(models.Model):
+    _name = "cmdb.show_infomatiaon"
+    _rec_name = "device_id"
+
+    @api.multi
+    def _default_device_id(self):
+        return self.env['cmdb.device'].browse(self._context.get('active_ids'))
+    @api.multi
+    def subscribe(self):
+        return {'aaaaaaaaaaaaaa'}
+    device_id = fields.Many2one('cmdb.device',string="名称",default=_default_device_id)
+    name = fields.Selection([(u'查看接口信息',u'查看接口信息'),(u'查看硬件信息',u'查看硬件信息')],string="合同编号")

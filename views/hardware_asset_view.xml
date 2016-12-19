@@ -43,6 +43,7 @@
         <record model="ir.ui.view" id="cmdb_device_tree_view">
             <field name="name">device.tree</field>
             <field name="model">cmdb.device</field>
+            <field name="priority" eval="1"/>
             <field name="arch" type="xml">
                 <tree>
                     <field name="id" string="资产id"/>
@@ -101,12 +102,48 @@
                 </search>
             </field>
         </record>
+
+         <record model="ir.ui.view" id="cmdb_device_command_form_view">
+            <field name="name">command.tree</field>
+            <field name="model">cmdb.show_infomatiaon</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="device_id" string="设备名称"/>
+                        <field name = "name" string="执行命令"/>
+                    </group>
+                    <footer>
+                        <button name="subscribe" type="object"
+                                string="保存" class="oe_highlight"/>
+                        or
+                        <button special="cancel" string="取消"/>
+                    </footer>
+                </form>
+            </field>
+         </record>
+         <record id="get_information" model="ir.actions.act_window" >
+            <field name="name">获取相关信息</field>
+            <field name="res_model">cmdb.device</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <!--<field name="context">{"active_device_id":active_id}</field>-->
+            <field name="view_id" ref="cmdb_device_form_view" />
+             <field name="domain">[('id','=',active_id)]</field>
+             <field name="target">new</field>
+         </record>
+
         <record model="ir.ui.view" id="cmdb_device_form_view">
             <field name="name">device.form</field>
             <field name="model">cmdb.device</field>
+            <field name="priority" eval="1"/>
             <field name="arch" type="xml">
+
                 <form>
                     <sheet>
+
+                        <div class="oe_right oe_button_box" name="buttons">
+                            <button class="oe_inline oe_stat_button" type="object" name="pop_window" icon="fa-star" string= "获取相关信息"/>
+                        </div>
                     <group>
                     <group>
 	                    <field name="id" string="资产id"/>
@@ -143,7 +180,8 @@
                 	</group>
                     </sheet>
                 </form>
-            </field>
+                </field>
+
         </record>
         <record model="ir.ui.view" id="cmdb_device_graph">
             <field name="name">cmdb.device_graph</field>
