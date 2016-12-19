@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="network_management_ip_list_action" model="ir.actions.act_window" >
+            <field name="name">设备管理地址与设备名称对照表</field>
+            <field name="res_model">cmdb.network_management_ip</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="xbar_list_action" model="ir.actions.act_window" >
+            <field name="name">设备交换矩阵信息表</field>
+            <field name="res_model">cmdb.xbar</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="interface_info_list_action" model="ir.actions.act_window" >
+            <field name="name">接口状态及接口信息统计表</field>
+            <field name="res_model">cmdb.interface_info</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="neighbor_list_action" model="ir.actions.act_window" >
+            <field name="name"> 设备邻接表</field>
+            <field name="res_model">cmdb.neighbor</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="trunk_allowed_vlan_list_action" model="ir.actions.act_window" >
+            <field name="name">Allowed_vlan表</field>
+            <field name="res_model">cmdb.trunk_allowed_vlan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="vpc_peergroup_list_action" model="ir.actions.act_window" >
+            <field name="name"> VPC设备主备关系表</field>
+            <field name="res_model">cmdb.vpc_peergroup</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="hsrp_list_action" model="ir.actions.act_window" >
+            <field name="name">HSRP信息表</field>
+            <field name="res_model">cmdb.hsrp</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="network_port_channel_list_action" model="ir.actions.act_window" >
+            <field name="name">Port_channel表</field>
+            <field name="res_model">cmdb.network_port_channel</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="ospf_neighbor_list_action" model="ir.actions.act_window" >
+            <field name="name">OSPF邻接表</field>
+            <field name="res_model">cmdb.ospf_neighbor</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="eigrp_neighbor_list_action" model="ir.actions.act_window" >
+            <field name="name">EIGRP邻接表</field>
+            <field name="res_model">cmdb.eigrp_neighbor</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="stp_summary_list_action" model="ir.actions.act_window" >
+            <field name="name">生成树信息表</field>
+            <field name="res_model">cmdb.stp_summary</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="fex_list_action" model="ir.actions.act_window" >
+            <field name="name">FEX连接信息表</field>
+            <field name="res_model">cmdb.fex</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="vpc_state_list_action" model="ir.actions.act_window" >
+            <field name="name">VPC状态信息表</field>
+            <field name="res_model">cmdb.vpc_state</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="vdc_state_list_action" model="ir.actions.act_window" >
+            <field name="name">VDC状态表</field>
+            <field name="res_model">cmdb.vdc_state</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="vdc_resource_usage_list_action" model="ir.actions.act_window" >
+            <field name="name">VDC资源利用表</field>
+            <field name="res_model">cmdb.vdc_resource_usage</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>>
+
+        <record id="redundancy_state_list_action" model="ir.actions.act_window" >
+            <field name="name">引擎冗余信息表</field>
+            <field name="res_model">cmdb.redundancy_state</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="license_status_list_action" model="ir.actions.act_window" >
+            <field name="name">license信息表</field>
+            <field name="res_model">cmdb.license_status</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="stp_logical_port_list_action" model="ir.actions.act_window" >
+            <field name="name">生成树logical ports数量信息表</field>
+            <field name="res_model">cmdb.stp_logical_port</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="mac_address_count_list_action" model="ir.actions.act_window" >
+            <field name="name">MAC地址数量信息表</field>
+            <field name="res_model">cmdb.mac_address_count</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="environment_power_summary_list_action" model="ir.actions.act_window" >
+            <field name="name">环境电源使用情况表</field>
+            <field name="res_model">cmdb.environment_power_summary</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="environment_module_power_supply_list_action" model="ir.actions.act_window" >
+            <field name="name">环境电源模块状态表</field>
+            <field name="res_model">cmdb.environment_module_power_supply</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="environment_power_supply_list_action" model="ir.actions.act_window" >
+            <field name="name">环境电源输入表</field>
+            <field name="res_model">cmdb.environment_power_supply</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="environment_fan_list_action" model="ir.actions.act_window" >
+            <field name="name">环境风扇表</field>
+            <field name="res_model">cmdb.environment_fan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+        <record id="environment_temperature_list_action" model="ir.actions.act_window">
+            <field name="name">环境温度表</field>
+            <field name="res_model">cmdb.environment_temperature</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <!--<field name="search_view_id" ref="CMDB_snetwork_management_ip_search_view"></field>-->
+           <!-- <field name="view_id" ref="resource_cost_tree_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">创建第一条硬件表
+                </p>
+            </field>
+        </record>
+
+
+
+
+        <!--<record id="action_server_desk_all_case1_tree" model="ir.actions.act_window.view">-->
+            <!--<field name="view_mode">tree</field>-->
+            <!--<field name="sequence" eval="1"/>-->
+            <!--<field name="view_id" ref="humen_cost_tree_view" />-->
+            <!--<field name="act_window_id" ref="resource_cost_list_action"/>-->
+        <!--</record>-->
+        <!--<record id="action_server_desk_all_case2_form" model="ir.actions.act_window.view">-->
+            <!--<field name="view_mode">form</field>-->
+            <!--<field name="sequence" eval="12"/>-->
+            <!--<field name="view_id" ref="humen_cost_form_view" />-->
+            <!--<field name="act_window_id" ref="resource_cost_list_action"/>-->
+        <!--</record>-->
+
+        <!-- top level menu: no parent -->
+        <!-- A first level in the left side menu is needed before using action= attribute -->
+        <menuitem id="sw_menu" name="SW" parent="main_cmdb_menu"/>
+        <!--<menuitem id="resource_export_menu" name="Export" parent="main_resource_cost_menu"/>-->
+        <menuitem id="network_management_ip_menu" name="设备管理地址与设备名称对照表" parent="sw_menu" action="network_management_ip_list_action"/>
+        <menuitem id="xbar_menu" name="设备交换矩阵信息表" parent="sw_menu" action="xbar_list_action"/>
+        <menuitem id="interface_info_menu" name="接口状态及接口信息统计表" parent="sw_menu" action="interface_info_list_action"/>
+        <menuitem id="neighbor_menu" name="设备邻接表" parent="sw_menu" action="neighbor_list_action"/>
+        <menuitem id="trunk_allowed_vlan_menu" name="Allowed_vlan表" parent="sw_menu" action="trunk_allowed_vlan_list_action"/>
+        <menuitem id="vpc_peergroup_menu" name="VPC设备主备关系表" parent="sw_menu" action="vpc_peergroup_list_action"/>
+
+        <menuitem id="hsrp_menu" name="HSRP" parent="sw_menu" action="hsrp_list_action"/>
+
+        <menuitem id="network_port_channel_menu" name="Port_channel表" parent="sw_menu" action="network_port_channel_list_action"/>
+        <menuitem id="ospf_neighborg_menu" name="OSPF邻接表" parent="sw_menu" action="ospf_neighbor_list_action"/>
+        <menuitem id="eigrp_neighbor_menu" name="EIGRP邻接表" parent="sw_menu" action="eigrp_neighbor_list_action"/>
+        <menuitem id="stp_summary_menu" name="生成树信息表" parent="sw_menu" action="stp_summary_list_action"/>
+
+        <menuitem id="fex_menu" name="FEX连接信息表" parent="sw_menu" action="fex_list_action"/>
+        <menuitem id="vpc_state_menu" name="VPC状态信息表" parent="sw_menu" action="vpc_state_list_action"/>
+
+        <menuitem id="vdc_state_menu" name="VDC状态" parent="sw_menu" action="vdc_state_list_action"/>
+        <menuitem id="vdc_resource_usage_menu" name="VDC资源利用表" parent="sw_menu" action="vdc_resource_usage_list_action"/>
+        <menuitem id="redundancy_state_menu" name="引擎冗余信息表" parent="sw_menu" action="redundancy_state_list_action"/>
+
+        <menuitem id="license_status_menu" name="License信息表" parent="sw_menu" action="license_status_list_action"/>
+        <menuitem id="stp_logical_port_menu" name="生成树logical ports数量信息表" parent="sw_menu" action="stp_logical_port_list_action"/>
+        <menuitem id="mac_address_count_menu" name="MAC地址数量信息表" parent="sw_menu" action="mac_address_count_list_action"/>
+
+        <menuitem id="environment_power_summary_menu" name="环境电源使用情况表" parent="sw_menu" action="environment_power_summary_list_action"/>
+        <menuitem id="environment_power_supply_menu" name="环境电源模块状态表" parent="sw_menu" action="environment_power_supply_list_action"/>
+       <menuitem id="environment_module_power_supply_menu" name="环境电源输入表" parent="sw_menu" action="environment_module_power_supply_list_action"/>
+        <menuitem id="environment_fan_menu" name="环境风扇表" parent="sw_menu" action="environment_fan_list_action"/>
+        <menuitem id="environment_temperature_menu" name="环境温度表" parent="sw_menu" action="environment_temperature_list_action"/>
+
+        <!-- A second level in the left side menu is needed before using action= attribute -->
+       <!--<menuitem id="all_cost_menu" name="All Cost" parent="resource_cost_menu" action="server_desk_case_list_action" groups="base.group_server_desk_cds,base.group_server_desk_manager"/>-->
+
+         </data>
+</openerp>

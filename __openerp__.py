@@ -31,6 +31,8 @@
         'views/demand_menu.xml',
         'views/software_asset_menu.xml',
         'views/ip_menu.xml',
+        'views/sw_menu.xml',
+        'views/sw_view.xml',
 
     ],
     # only loaded in demonstration mode
