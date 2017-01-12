@@ -4,10 +4,11 @@ import re
 
 
 # 解析show_version命令
-def show_version():
-    f = open(r'C:\Users\nantian\Desktop\command_result\log.txt', 'r')
-    alllines = f.readlines()
-    f.close()
+def show_version(before):
+    # f = open(r'C:\Users\nantian\Desktop\command_result\log.txt', 'r')
+    # alllines = f.readlines()
+    # f.close()
+    alllines = before.splitlines()
     show_version_list = []
     days = 0
     hours = 0
@@ -71,10 +72,11 @@ def show_version():
 
 
 # 解析show ip interface biref
-def show_ip_inteface_biref():
-    f = open(r'C:\Users\nantian\Desktop\command_result\log1.txt','r')
-    alllines = f.readlines()
-    f.close()
+def show_ip_inteface_biref(before):
+    # f = open(r'C:\Users\nantian\Desktop\command_result\log1.txt','r')
+    # alllines = f.readlines()
+    # f.close()
+    alllines = before.splitlines()
     interface = []
     ip_address = []
     ok = []
@@ -104,9 +106,11 @@ def show_ip_inteface_biref():
     return interface_dict
 
 
-def show_neighbor():
-    f = open(r'C:\Users\nantian\Desktop\command_result\show_neighbor.txt','r')
-    alllines = f.readlines()
+def show_neighbor(before):
+    # f = open(r'C:\Users\nantian\Desktop\command_result\show_neighbor.txt','r')
+    # alllines = f.readlines()
+    # f.close()
+    alllines = before.splitlines()
     start_index = len(alllines)
     use_lines = []
     use_line = []
@@ -160,10 +164,11 @@ def show_neighbor():
            'platform': platform}
 
 
-def show_interface_trunk():
-    f = open(r'C:\Users\nantian\Desktop\command_result\show_interface_trunk.txt','r')
-    alllines = f.readlines()
-    f.close()
+def show_interface_trunk(before):
+    # f = open(r'C:\Users\nantian\Desktop\command_result\show_interface_trunk.txt','r')
+    # alllines = f.readlines()
+    # f.close()
+    alllines = before.splitlines()
     start_index1 = len(alllines)
     start_index2 = len(alllines)
     start_index3 = len(alllines)
@@ -227,10 +232,11 @@ def show_interface_trunk():
     return {'local_trunk_interface': local_trunk_interface, 'native_vlan': native_vlan, 'local_allowed_vlans': local_allowed_vlans}
 
 
-def show_ip_route():
-    f = open(r'C:\Users\nantian\Desktop\command_result\show_ip_route.txt','r')
-    alllines = f.readlines()
-    f.close()
+def show_ip_route(before):
+    # f = open(r'C:\Users\nantian\Desktop\command_result\show_ip_route.txt','r')
+    # alllines = f.readlines()
+    # f.close()
+    alllines = before.splitlines()
     route_subnet = []
     route_metric = []
     route_next_hop = []
@@ -316,10 +322,11 @@ def show_ip_route():
     return {'dst_ip': route_subnet, 'dst_netmask': masks, 'interface_id': route_interface, 'metric': route_metric, 'next_hop': route_next_hop}
 
 
-def show_spanning_tree_summary():
-    f = open(r'C:\Users\nantian\Desktop\command_result\show_spanning_tree_summary.txt','r')
-    alllines = f.readlines()
-    f.close()
+def show_spanning_tree_summary(before):
+    # f = open(r'C:\Users\nantian\Desktop\command_result\show_spanning_tree_summary.txt','r')
+    # alllines = f.readlines()
+    # f.close()
+    alllines = before.splitlines()
     root_brige = []
     port_type_default = []
     bpdu_guard_default = []
@@ -363,10 +370,11 @@ def show_spanning_tree_summary():
             'pathcost_method_used': pathcost_method_used}
 
 
-def show_spanning_tree_summary_total():
-    f = open(r'C:\Users\nantian\Desktop\command_result\show_spanning_tree_summary_totals.txt','r')
-    alllines = f.readlines()
-    f.close()
+def show_spanning_tree_summary_total(before):
+    # f = open(r'C:\Users\nantian\Desktop\command_result\show_spanning_tree_summary_totals.txt','r')
+    # alllines = f.readlines()
+    # f.close()
+    alllines = before.splitlines()
     start_index = len(alllines)
     native_lines = []
     allowed_lines = []
@@ -387,10 +395,11 @@ def show_spanning_tree_summary_total():
     return {'logical_ports_available': total_logical_ports,}
 
 
-def show_mac_address_table_count():
-    f=open(r'C:\Users\nantian\Desktop\command_result\show_mac_address_table_count.txt','r')
-    alllines = f.readlines()
-    f.close()
+def show_mac_address_table_count(before):
+    # f=open(r'C:\Users\nantian\Desktop\command_result\show_mac_address_table_count.txt','r')
+    # alllines = f.readlines()
+    # f.close()
+    alllines = before.splitlines()
     start_index = len(alllines)
 
     dynamic_address_count=0
@@ -408,10 +417,11 @@ def show_mac_address_table_count():
     return {'mac_current':dynamic_address_count}
 
 
-def show_mac_address_table():
-    f = open(r'C:\Users\nantian\Desktop\command_result\show_mac_address_table.txt','r')
-    alllines = f.readlines()
-    f.close()
+def show_mac_address_table(before):
+    # f = open(r'C:\Users\nantian\Desktop\command_result\show_mac_address_table.txt','r')
+    # alllines = f.readlines()
+    # f.close()
+    alllines = before.splitlines()
     start_index = len(alllines)
     use_lines = []
     # 利用正则表达式获取需要信息的行
@@ -445,10 +455,11 @@ def show_mac_address_table():
     return {'vlan_ids':vlan,'mac':mac_address,'interface_id':ports}
 
 
-def show_ip_arp():
-    f=open(r'C:\Users\nantian\Desktop\command_result\show_ip_arp.txt','r')
-    alllines = f.readlines()
-    f.close()
+def show_ip_arp(before):
+    # f=open(r'C:\Users\nantian\Desktop\command_result\show_ip_arp.txt','r')
+    # alllines = f.readlines()
+    # f.close()
+    alllines = before.splitlines()
     start_index = len(alllines)
     use_lines = []
     use_line = []
@@ -480,10 +491,11 @@ def show_ip_arp():
     return{'ip':address,'mac_id':hardware_addr,'interface_id':interface}
 
 
-def show_interface_status():
-    f=open(r'C:\Users\nantian\Desktop\command_result\show_interface_status.txt','r')
-    alllines = f.readlines()
-    f.close()
+def show_interface_status(before):
+    # f=open(r'C:\Users\nantian\Desktop\command_result\show_interface_status.txt','r')
+    # alllines = f.readlines()
+    # f.close()
+    alllines = before.splitlines()
     start_index = len(alllines)
     use_lines = []
     use_line = []
@@ -513,12 +525,14 @@ def show_interface_status():
     # print show_interface_status
     return show_interface_status
 
+
 # 接口解析非nexus(测试--6500,3750)
-def show_interface():
+def show_interface(before):
     # file_object = open(r'E:\桌面\logs\B_XDA02_CAM_AS02_22.1.181.250.log', 'r')
-    file_object = open(r'C:\Users\nantian\Desktop\command_result\show_interface.txt', 'r')
-    context = file_object.read()
-    file_object.close()
+    # file_object = open(r'C:\Users\nantian\Desktop\command_result\show_interface.txt', 'r')
+    # context = file_object.read()
+    # file_object.close()
+    context = before
     # pattern = re.compile(r'((?:Fast|Gigabit)[\s|\S]*?swapped out)')
     pattern = re.compile(r'([A-Z][\s|\S]*?swapped out)')
     interfaces = pattern.findall(context)
