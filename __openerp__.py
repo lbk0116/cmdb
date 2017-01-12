@@ -30,6 +30,7 @@
         # 'views/business_system_view.xml',
         'views/demand_menu.xml',
         'views/software_asset_menu.xml',
+        'views/software_asset_view.xml',
         'views/ip_menu.xml',
         'views/sw_menu.xml',
         'views/sw_view.xml',

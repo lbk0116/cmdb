@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="cmdb_os_instance_form_view">
+            <field name="model">cmdb.os_instance</field>
+            <field name="arch" type="xml">
+                <form string="os_instance_form" >
+                    <sheet>
+                        <div class="oe_right oe_button_box" name="buttons">
+                            <button class="oe_inline oe_stat_button" type="action" name="%(get_information)d" icon="fa-star" string= "获取相关信息"/>
+                        </div>
+
+                     <group>
+                        <group>
+                            <field name="name" string='名称'/>
+                            <field name="desc" string='描述'/>
+                            <field name="memory" string='内存大小'/>
+                            <field name="route_ids" string='包含的路由'/>
+                        </group>
+                        <group >
+                            <field name="software_id" string='关联软件'/>
+                            <field name="device_id" string='关联硬件设备' />
+                            <field name="region_id" string='所属逻辑功能区'/>
+                            <field name="business_system_id" string='关联业务应用表'/>
+                        </group>
+                    </group>
+                     </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="cmdb_os_instance_tree_view">
+            <field name="name">操作系统实例表</field>
+            <field name="model">cmdb.os_instance</field>
+            <field name="arch" type="xml">
+                <tree string="os_instance_tree" >
+                    <field name="name" string='名称'/>
+                    <field name="desc" string='描述'/>
+                    <field name="memory" string='内存大小'/>
+                    <field name="route_ids" string='包含的路由'/>
+                    <field name="software_id" string='关联软件'/>
+                    <field name="device_id" string='关联硬件设备' />
+                    <field name="region_id" string='所属逻辑功能区'/>
+                    <field name="business_system_id" string='关联业务应用表'/>
+                </tree>
+            </field>
+        </record>
+        <record id="cmdb_os_instance_search_view" model="ir.ui.view">
+            <field name="name">操作系统实例表</field>
+            <field name="model">cmdb.os_instance</field>
+            <field name="arch" type="xml">
+                <search string="os_instance_search">
+                    <field name="name" />
+                        <!--<filter string="无效" name="active" domain="[('active', '=',False)]"/>&ndash;&gt;-->
+                    <separator/>
+                    <group expand="0" string="分组">
+                        <!--<filter string="名称" name="name" context="{'group_by':'name'}"/>-->
+                    </group>
+                </search>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -109,7 +109,7 @@
             <field name="arch" type="xml">
                 <form>
                     <group>
-                        <field name="device_id" string="设备名称"/>
+                        <field name="os_id" string="设备名称"/>
                         <field name = "name" string="执行命令"/>
                     </group>
                     <footer>
@@ -123,12 +123,12 @@
          </record>
          <record id="get_information" model="ir.actions.act_window" >
             <field name="name">获取相关信息</field>
-            <field name="res_model">cmdb.device</field>
+            <field name="res_model">cmdb.show_infomatiaon</field>
             <field name="view_type">form</field>
             <field name="view_mode">form</field>
             <!--<field name="context">{"active_device_id":active_id}</field>-->
-            <field name="view_id" ref="cmdb_device_form_view" />
-             <field name="domain">[('id','=',active_id)]</field>
+            <field name="view_id" ref="cmdb_device_command_form_view" />
+             <!--<field name="domain">[('id','=',active_id)]</field>-->
              <field name="target">new</field>
          </record>
 
@@ -157,7 +157,8 @@
 	                    <field name="inline_owner" string="行内归属人"/>
                         <field name="purchase_date" string="设备购入时间"/>
                         <field name="manage_ip" string="管理IP"/>
-                        <field name="manage_type" string="管理类型"/>
+                        <field name="manage_type" string="纳管方式"/>
+                        <field name="ass_type" string="资产类型"/>
                     </group>
                     <group>
 	                    <field name="username" string="用户名"/>

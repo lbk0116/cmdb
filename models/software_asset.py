@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-from openerp import fields
+from openerp import fields,api
 from openerp import models
 
-#应用软件表
+
+# 应用软件表
 class software(models.Model):
     _name = 'cmdb.software'
 
@@ -12,9 +13,10 @@ class software(models.Model):
     soft_version = fields.Char(string='软件版本')
     license = fields.Char(string='许可证号')
     instance_total = fields.Integer(string='可安装个数')
-    manage_mode = fields.Selection([('API','API'),('CLI','CLI'),('controller','controller')],string='纳管方式')
+    manage_mode = fields.Selection([('API','API'),('ssh','ssh'),('telnet','telnet'),('controller','controller')],string='纳管方式')
 
-#操作系统实例表
+
+# 操作系统实例表
 class os_instance(models.Model):
     _name = 'cmdb.os_instance'
 
@@ -27,6 +29,22 @@ class os_instance(models.Model):
     route_ids = fields.Char(string='包含的路由')
     business_system_id = fields.Many2one('cmdb.business_system')#关联业务应用表
 
+    @api.multi
+    def pop_window(self):
+        form_id = self.env['ir.model.data'].search([('name','=','cmdb_device_command_form_view'),('module','=','cmdb')]).res_id
+        tree_id = self.env['ir.model.data'].search([('name','=','cmdb_device_command_tree_view'),('module','=','cmdb')]).res_id
+        value = {
+            'name': ('选择查看信息'),
+            'res_model': 'cmdb.show_infomatiaon',
+            'views': [[form_id, 'form']],
+           # 'view_mode':'tree',
+            'type': 'ir.actions.act_window',
+            'domain': [('id','=',1)],
+            'target':'new'
+        }
+        return value
+
+
 #应用软件实例表
 class software_instance(models.Model):
     _name = 'cmdb.software_instance'
@@ -36,25 +54,26 @@ class software_instance(models.Model):
     os_id = fields.Many2one('cmdb.os_instance')
     responsible = fields.Many2one('hr.employee')
 
-#接口表
+
+# 接口表
 class interface(models.Model):
     _name = 'cmdb.interface'
 
     name = fields.Char(string='接口名称')
     os_id = fields.Many2one('cmdb.os_instance',string='关联的操作系统实例表')
     type = fields.Selection([(u'物理',u'物理'),(u'虚拟',u'虚拟'),('VIP','VIP')],string='类型')
-    ip_ids = fields.One2many('cmdb.ip_allocation','interface_id',string='分配的IP地址')
+    # ip_ids = fields.One2many('cmdb.ip_allocation','interface_id',string='分配的IP地址')
+    ip_ids = fields.Char()
     vlan = fields.Char(string='所属VLAN')
-    device_id = fields.Many2one('cmdb.device',string='关联的设备')
-    software_instance_id = fields.Many2one('cmdb.software_instance',string='关联的软件')
     vs_id = fields.Char(string='关联的VS')
     region_id = fields.Many2one('cmdb.region',string='网关IP地址')
     mac_address = fields.Char(string='MAC地址')
     status = fields.Char(string='状态')
-    link_status = fields.Selection([('up','up'),('down','down')],string='链路状态')
+    link_status = fields.Selection([('up','up'),('down','down'),('administratively down','administratively down')],string='链路状态')
     line_protocol_status = fields.Selection([('up','up'),('down','down')],string='链路协议状态')
 
-#路由表
+
+# 路由表
 class route(models.Model):
     _name = 'cmdb.route'
 
@@ -68,13 +87,15 @@ class route(models.Model):
     metric = fields.Char(string='度量值')
     os_id = fields.Char(string='关联的操作系统')
 
-#ARP表
+
+# ARP表
 class arp(models.Model):
     _name = 'cmdb.arp'
-    interface_id = fields.Many2one(string='接口')
+    interface_id = fields.Char (string='接口')
     ip = fields.Char(string='IP地址')
-    mac_id = fields.Many2one('cmdb.mac',string='关联的MAC地址')
-    os_id = fields.Many2one('cmdb.os_instance',string='关联的操作系统')
+    mac_id = fields.Char(string='关联的MAC地址')
+    os_instance_id = fields.Many2one('cmdb.os_instance',string='关联的操作系统')
+
 
 # NAT表
 class nat(models.Model):
@@ -86,21 +107,24 @@ class nat(models.Model):
     to_ip = fields.Char(string='目标IP')
     flag = fields.Char(string='标志')
 
-#MAC表
+
+# MAC表
 class mac(models.Model):
     _name = 'cmdb.mac'
     interface_type = fields.Selection([(u'物理',u'物理'),('portchannel','portchannel')],string='接口类型')
-    interface_id = fields.Many2one('cmdb.interface',string='关联的接口')
-    vlan_ids = fields.Many2one('cmdb.vlan',string='关联的所属VLAN')
+    interface_id = fields.Char(string='关联的接口')
+    vlan_ids = fields.Char(string='关联的所属VLAN')
     mac = fields.Char(string='MAC地址')
     interface_status = fields.Selection([('vlan','vlan'),('trunk','trunk')],string='接口模式')
 
-#vlan表
+
+# vlan表
 class vlan(models.Model):
     _name = 'cmdb.vlan'
     name = fields.Char(string='名称')
 
-#license信息表
+
+# license信息表
 class license(models.Model):
     _name = 'cmdb.license'
     device_id = fields.Many2one('cmdb.device',string='关联的设备')
