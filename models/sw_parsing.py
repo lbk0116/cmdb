@@ -1,18 +1,24 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import re
-
+import logging
 
 # 解析show_version命令
 def show_version(before):
     # f = open(r'C:\Users\nantian\Desktop\command_result\log.txt', 'r')
     # alllines = f.readlines()
     # f.close()
+    _logger = logging.getLogger(__name__)
+    _logger.info(before)
+    _logger.info('************************************************')
     alllines = before.splitlines()
     show_version_list = []
     days = 0
     hours = 0
     minutes = 0
+    kickstart_image = ''
+    bootflash_size = ''
+	# name=''
     for line in alllines:
         if line:
             name_obj = re.search(r'.*(?=uptime)', line)
@@ -72,7 +78,7 @@ def show_version(before):
 
 
 # 解析show ip interface biref
-def show_ip_inteface_biref(before):
+def show_ip_interface_brief(before):
     # f = open(r'C:\Users\nantian\Desktop\command_result\log1.txt','r')
     # alllines = f.readlines()
     # f.close()
@@ -85,13 +91,14 @@ def show_ip_inteface_biref(before):
     protocol = []
     # 利用正则表达式获取需要信息的行
     for index ,line in enumerate(alllines):
-        if index and len(line)>1:
+        if len(line)>1 and line.find('Interface') <0:
             list = re.split('\s+', line)
             if list[-4] == 'administratively':
                 list[-4] = list[-4]+' '+list[-3]
                 list[-3] = list[-2]
                 list[-2] = ''
-            list.remove('')
+            if '' in list:
+                list.remove('')
             if '' in list:
                 list.remove('')
             interface.append(list[0])
@@ -134,7 +141,7 @@ def show_neighbor(before):
             megre_index = index
             for ele in line:
                 merge_line.append(ele.strip())
-        elif index == megre_index +1:
+        elif index == merge_index +1:
             for ele in line:
                 if ele:
                     merge_line.append(ele.strip())
@@ -385,10 +392,12 @@ def show_spanning_tree_summary_total(before):
             if index<=start_index:
                 m = re.search('STP Active',line,re.IGNORECASE)
                 if m:
-                    start_index=index+1
+                    start_index=index+2
                     continue
             else:
                if re.split('\s\s+',line):
+                   _logger = logging.getLogger(__name__)
+                   _logger.info(re.split('\s\s+',line))
                    total_logical_ports.append(int(re.split('\s\s+',line)[-1]))
                    break
 

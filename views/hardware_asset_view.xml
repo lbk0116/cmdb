@@ -156,7 +156,6 @@
 	                    <field name="soft_verison" string="软件版本"/>
 	                    <field name="inline_owner" string="行内归属人"/>
                         <field name="purchase_date" string="设备购入时间"/>
-                        <field name="manage_ip" string="管理IP"/>
                         <field name="manage_type" string="纳管方式"/>
                         <field name="ass_type" string="资产类型"/>
                     </group>

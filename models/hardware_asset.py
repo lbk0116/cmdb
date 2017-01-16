@@ -19,12 +19,12 @@ class device(models.Model):
     name = fields.Char(string="设备名称", required="True")
     # device_login_ip = fields.Char(string="设备登录地址")
     type_id = fields.Many2one("cmdb.property_metadata", string="设备类型", required="True",
-                              domain=[('type', 'ilike', "配件类型")])
+                              domain=[('type', 'ilike', "设备类型")])
     manufacturer_id = fields.Many2one("cmdb.property_metadata", string="厂商", required="True",
-                                      domain=[('type', 'ilike', "设备品牌")])
+                                      domain=[('type', 'ilike', "厂商")])
     sn = fields.Char(string="序列号", required="True")
     model_id = fields.Many2one("cmdb.property_metadata", string="型号", required="True",
-                               domain=[('type', 'ilike', "硬件型号")])
+                               domain=[('type', 'ilike', "型号")])
     soft_verison = fields.Many2one('cmdb.software',string="软件版本", required="True")
     inline_owner = fields.Char(string="行内归属人")
     purchase_date = fields.Date(string="设备购入时间")

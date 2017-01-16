@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import pexpect
+import logging
 
 def ssh_command(account_name,manage_ip,account_password,command):
     """
@@ -9,6 +10,11 @@ def ssh_command(account_name,manage_ip,account_password,command):
        connect to a new host and ssh asks you if you want to accept the public key
        fingerprint and continue connecting.
        """
+    _logger = logging.getLogger(__name__)
+    _logger.info(account_name)
+    _logger.info(manage_ip)
+    _logger.info(account_password)
+    _logger.info(command)
     ssh_newkey = 'Are you sure you want to continue connecting'
     # 为 ssh 命令生成一个 spawn 类的子程序对象.
     child = pexpect.spawn('ssh -l %s %s %s' % (account_name,manage_ip,command),maxread=2000)
