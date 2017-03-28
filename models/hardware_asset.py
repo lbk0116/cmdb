@@ -105,7 +105,10 @@ class show_infomatiaon(models.Model):
         os_id =self.env['cmdb.os_instance'].browse(self._context.get('active_ids'))
         print 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
         if os_id:
-            create_sw_record.create_all(os_id)
+            if os_id.software_id.name == 'IOS':
+                create_sw_record.create_all(os_id)
+            else:
+                pass
             print 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'
             return {'aaaaaaaaaaaaaa'}
     os_id = fields.Many2one('cmdb.os_instance',string="名称",default = _default_os_id)

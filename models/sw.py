@@ -104,6 +104,9 @@ class neighbor(models.Model):
     peer_interface = fields.Char(string='对端接口')
     peer_interface_model = fields.Char(string='对端接口所在板卡')
 
+    def create(self):
+        pass
+
 
 class trunk_allowed_vlan(models.Model):
     _name = 'cmdb.trunk_allowed_vlan'
