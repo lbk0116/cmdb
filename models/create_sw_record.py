@@ -36,19 +36,18 @@ def create_network_management_ip(os_id):
     command2 = 'show ip interface brief '
     fields_dict_list = []
     if os_id.software_id.manage_mode == 'ssh':
-        child = my_pexpect.ssh_command(os_id.device_id.username,os_id.device_id.manage_ip,os_id.device_id.password,command1)
-        before = child.before
-        _logger.info(before)
+        before = my_pexpect.ssh_command(os_id.device_id.username,os_id.device_id.manage_ip,os_id.device_id.password,command1)
+        _logger.info(text)
         show_version_list = sw_parsing.show_version(before)
-        child = my_pexpect.ssh_command(os_id.device_id.username,os_id.device_id.manage_ip,os_id.device_id.password,command2)
-        before = child.before
+        before = my_pexpect.ssh_command(os_id.device_id.username,os_id.device_id.manage_ip,os_id.device_id.password,command2)
         _logger.info(before)
         show_ip_int_brief_list = sw_parsing.show_ip_interface_brief(before)
     elif os_id.software_id.manage_mode == 'telnet':
-        child_after = my_pexpect.telnet_command(os_id.device_id.username,os_id.device_id.manage_ip,os_id.device_id.password,command1)
+        child_after = my_pexpect.telnet_command_sw(os_id.device_id.username,os_id.device_id.manage_ip,os_id.device_id.password,command1)
+        _logger.info(child_after)
         show_version_list = sw_parsing.show_version(child_after)
-        child_after = my_pexpect.telnet_command(os_id.device_id.username,os_id.device_id.manage_ip,os_id.device_id.password,command2)
-        show_ip_int_brief_list = sw_parsing.show_ip_inteface_biref(child_after)
+        child_after = my_pexpect.telnet_command_sw(os_id.device_id.username,os_id.device_id.manage_ip,os_id.device_id.password,command2)
+        show_ip_int_brief_list = sw_parsing.show_ip_interface_brief(child_after)
     else:
         pass
     # soft = show_version_list['software']   # os_id_search_domain =[['software_id.name','like',soft],['device','=',os_id.device_id.id]]
@@ -71,12 +70,11 @@ def create_interface(os_id):
     command = 'show ip interface brief'
     fields_dict_list = []
     if os_id.software_id.manage_mode == 'ssh':
-        child = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
+        before = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
                                        os_id.device_id.password, command)
-        before = child.before
         show_ip_int_brief_list = sw_parsing.show_ip_interface_brief(before)
     elif os_id.software_id.manage_mode == 'telnet':
-        child_after = my_pexpect.telnet_command(os_id.device_id.username,os_id.device_id.manage_ip,os_id.device_id.password,command)
+        child_after = my_pexpect.telnet_command_sw(os_id.device_id.username,os_id.device_id.manage_ip,os_id.device_id.password,command)
         show_ip_int_brief_list = sw_parsing.show_ip_interface_brief(child_after)
     else:
         pass
@@ -124,18 +122,16 @@ def create_interface_info(os_id):
     command1 = "show interface"
     command2 = "show interface status"
     if os_id.software_id.manage_mode == 'ssh':
-        child = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
+        before = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
                                        os_id.device_id.password, command2)
-        before = child.before
         show_interface_status = sw_parsing.show_interface_status(before)
-        child = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
+        before = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
                                         os_id.device_id.password, command1)
-        before = child.before
         fields_dict_list = sw_parsing.show_interface(before)
     elif os_id.software_id.manage_mode == 'telnet':
-        child_after = my_pexpect.telnet_command(os_id.device_id.username,os_id.device_id.manage_ip,os_id.device_id.password,command1)
+        child_after = my_pexpect.telnet_command_sw(os_id.device_id.username,os_id.device_id.manage_ip,os_id.device_id.password,command1)
         fields_dict_list = sw_parsing.show_interface(child_after)
-        child_after = my_pexpect.telnet_command(os_id.device_id.username,os_id.device_id.manage_ip,os_id.device_id.password,command2)
+        child_after = my_pexpect.telnet_command_sw(os_id.device_id.username,os_id.device_id.manage_ip,os_id.device_id.password,command2)
         show_interface_status = sw_parsing.show_interface_status(child_after)
 
     for line in fields_dict_list:
@@ -159,12 +155,11 @@ def create_neighbor(os_id):
     command = "show cdp neighbors"
     fields_dict_list = []
     if os_id.software_id.manage_mode == 'ssh':
-        child = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
+        before = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
                                        os_id.device_id.password, command)
-        before = child.before
         show_neighbor_list = sw_parsing.show_neighbor(before)   # 等待show module 的数据
     elif os_id.software_id.manage_mode == 'telnet':
-        child_after = my_pexpect.telnet_command(os_id.device_id.username,os_id.device_id.manage_ip,
+        child_after = my_pexpect.telnet_command_sw(os_id.device_id.username,os_id.device_id.manage_ip,
                                                 os_id.device_id.password,command)
         show_neighbor_list = sw_parsing.show_neighbor(child_after)
 
@@ -190,12 +185,11 @@ def create_arp(os_id):
     command = "show ip arp"
     fields_dict_list = []
     if os_id.software_id.manage_mode == 'ssh':
-        child = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
+        before = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
                                        os_id.device_id.password, command)
-        before = child.before
         show_arp_list = sw_parsing.show_ip_arp(before)   # 等待show module 的数据
     elif os_id.software_id.manage_mode == 'telnet':
-        child_after = my_pexpect.telnet_command(os_id.device_id.username,os_id.device_id.manage_ip,
+        child_after = my_pexpect.telnet_command_sw(os_id.device_id.username,os_id.device_id.manage_ip,
                                                 os_id.device_id.password,command)
         show_arp_list = sw_parsing.show_ip_arp(child_after)
 
@@ -220,12 +214,11 @@ def create_mac(os_id):
     command = "show mac address-table"
     fields_dict_list = []
     if os_id.software_id.manage_mode == 'ssh':
-        child = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
+        before = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
                                        os_id.device_id.password, command)
-        before = child.before
         show_mac_list = sw_parsing.show_mac_address_table(before)   # 等待show module 的数据
     elif os_id.software_id.manage_mode == 'telnet':
-        child_after = my_pexpect.telnet_command(os_id.device_id.username,os_id.device_id.manage_ip,
+        child_after = my_pexpect.telnet_command_sw(os_id.device_id.username,os_id.device_id.manage_ip,
                                                 os_id.device_id.password,command)
         show_arp_list = sw_parsing.show_mac_address_table()
 
@@ -251,20 +244,18 @@ def trunk_allowed_vlan(os_id):
     fields_dict_list = []
 
     if os_id.software_id.manage_mode == 'ssh':
-        child = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
+        before = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
                                        os_id.device_id.password, command2)
-        before = child.before
         show_interface_trunk = sw_parsing.show_interface_trunk(before)
-        child = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
+        before = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
                                     os_id.device_id.password, command1)
-        before = child.before
 
         show_neighbor_list = sw_parsing.show_neighbor(before)   # 等待show module 的数据
     elif os_id.software_id.manage_mode == 'telnet':
-        child_after = my_pexpect.telnet_command(os_id.device_id.username,os_id.device_id.manage_ip,
+        child_after = my_pexpect.telnet_command_sw(os_id.device_id.username,os_id.device_id.manage_ip,
                                                 os_id.device_id.password,command2)
         show_interface_trunk = sw_parsing.show_interface_trunk(child_after)
-        child_after = my_pexpect.telnet_command(os_id.device_id.username,os_id.device_id.manage_ip,
+        child_after = my_pexpect.telnet_command_sw(os_id.device_id.username,os_id.device_id.manage_ip,
                                                 os_id.device_id.password,command1)
         show_interface_trunk = sw_parsing.show_neighbor(child_after)
     else:
@@ -285,9 +276,8 @@ def trunk_allowed_vlan(os_id):
                 os_id_search_domain = [['device_id.name','=',device_name]]
                 peer_os_id = connect_search_server(search_model, os_id_search_domain)
                 if peer_os_id:
-                    # child = my_pexpect.ssh_command(peer_os_id.device_id.username, peer_os_id.device_id.manage_ip,
+                    # before = my_pexpect.ssh_command(peer_os_id.device_id.username, peer_os_id.device_id.manage_ip,
                     #                                peer_os_id.device_id.password, command2)
-                    # before = child.before
                     peer_show_interface_trunk = sw_parsing.show_interface_trunk()
                     for k in range(len(peer_show_interface_trunk['local_trunk_interface'])):
                         if peer_trunk_interface ==  peer_show_interface_trunk['local_trunck_interface'][k]:
@@ -318,12 +308,11 @@ def create_route(os_id):
     command = "show ip route"
     fields_dict_list = []
     if os_id.software_id.manage_mode == 'ssh':
-        child = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
+        before = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
                                        os_id.device_id.password, command)
-        before = child.before
         show_ip_route_dict = sw_parsing.show_ip_route(before)   # 等待show module 的数据
     elif os_id.software_id.manage_mode == 'telnet':
-        child_after = my_pexpect.telnet_command(os_id.device_id.username,os_id.device_id.manage_ip,
+        child_after = my_pexpect.telnet_command_sw(os_id.device_id.username,os_id.device_id.manage_ip,
                                                 os_id.device_id.password,command)
         show_ip_route_dict = sw_parsing.show_ip_route(child_after)
 
@@ -373,7 +362,7 @@ def create_ospf_neighbor(os_id):
     if os_id.software_id.manage_mode == 'ssh':
          pass # 等待show module 的数据
     elif os_id.software_id.manage_mode == 'telnet':
-        child_after = my_pexpect.telnet_command(os_id.device_id.username,os_id.device_id.manage_ip,
+        child_after = my_pexpect.telnet_command_sw(os_id.device_id.username,os_id.device_id.manage_ip,
                                                 os_id.device_id.password,command)
         show_ip_ospf_neighbor = sw_parsing.show_ip_ospf_neighbor(child_after)
     for i in len(show_ip_ospf_neighbor['port_type_default']):
@@ -400,12 +389,11 @@ def create_stp_summary(os_id):
     command = "show spanning-tree summary"
     fields_dict_list = []
     if os_id.software_id.manage_mode == 'ssh':
-        child = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
+        before = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
                                        os_id.device_id.password, command)
-        before = child.before
         show_spanning_tree_summary = sw_parsing.show_spanning_tree_summary(before)   # 等待show module 的数据
     elif os_id.software_id.manage_mode == 'telnet':
-        child_after = my_pexpect.telnet_command(os_id.device_id.username,os_id.device_id.manage_ip,
+        child_after = my_pexpect.telnet_command_sw(os_id.device_id.username,os_id.device_id.manage_ip,
                                                 os_id.device_id.password,command)
         show_spanning_tree_summary = sw_parsing.show_spanning_tree_summary(child_after)
     for i in range(len(show_spanning_tree_summary['port_type_default'])):
@@ -432,7 +420,7 @@ def create_stp_summary(os_id):
 #     fields_dict_list = []
 #     if os_id.software_id.manage_mode == 'telnet':
 #         # command = command_b
-#         # child_config = my_pexpect.telnet_command(os_id.device_id.username, os_id.device_id.manage_ip,
+#         # child_config = my_pexpect.telnet_command_sw(os_id.device_id.username, os_id.device_id.manage_ip,
 #         #                                os_id.device_id.password, command)
 #         # dict = sw_parsing.show_vdc_state(child_config)
 #         pass
@@ -464,7 +452,7 @@ def create_stp_summary(os_id):
 #     fields_dict_list = []
 #     if os_id.software_id.manage_mode == 'telnet':
 #         command = command_b
-#         # child_config = my_pexpect.telnet_command(os_id.device_id.username, os_id.device_id.manage_ip,
+          # child_config = my_pexpect.telnet_command_sw(os_id.device_id.username, os_id.device_id.manage_ip,
 #         #                                os_id.device_id.password, command)
 #         dict = sw_parsing_xml.show_vdc_resource()
 #     elif os_id.software_id.manage_mode == 'ssh':
@@ -498,7 +486,7 @@ def create_stp_summary(os_id):
 #
 #     if os_id.software_id.manage_mode == 'telnet':
 #         command = command_a
-#         # child_config = my_pexpect.telnet_command(os_id.device_id.username, os_id.device_id.manage_ip,
+#         # child_config = my_pexpect.telnet_command_sw(os_id.device_id.username, os_id.device_id.manage_ip,
 #         #                                os_id.device_id.password, command)
 #         dict = sw_parsing_xml.show_redundancy_status()
 #
@@ -533,7 +521,7 @@ def create_stp_summary(os_id):
 #
 #     if os_id.software_id.manage_mode == 'telnet':
 #         command = command_a
-#         # child_config = my_pexpect.telnet_command(os_id.device_id.username, os_id.device_id.manage_ip,
+#         # child_config = my_pexpect.telnet_command_sw(os_id.device_id.username, os_id.device_id.manage_ip,
 #         #                                          os_id.device_id.password, command)
 #         dict = sw_parsing_xml.show_redundancy_status()
 #
@@ -562,14 +550,13 @@ def create_stp_logical_port(os_id):
     command = "show spanning-tree summary totals"
     fields_dict_list = []
     if os_id.software_id.manage_mode == 'telnet':
-        child_config = my_pexpect.telnet_command(os_id.device_id.username, os_id.device_id.manage_ip,
+        child_config = my_pexpect.telnet_command_sw(os_id.device_id.username, os_id.device_id.manage_ip,
                                                  os_id.device_id.password, command)
         dict = sw_parsing.show_spanning_tree_summary_total(child_config)
 
     elif os_id.software_id.manage_mode == 'ssh':
-        child = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
+        before = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
                                        os_id.device_id.password, command)
-        before = child.before
         dict = sw_parsing.show_spanning_tree_summary_total(before)
     for i in range(len(dict['logical_ports_available'])):
         fields_dict = {
@@ -589,14 +576,13 @@ def create_mac_address_count(os_id):
     # command_b = "show mac address-table count | xml | nomore"
     fields_dict_list = []
     if os_id.software_id.manage_mode == 'telnet':
-            child_config = my_pexpect.telnet_command(os_id.device_id.username, os_id.device_id.manage_ip,
+            child_config = my_pexpect.telnet_command_sw(os_id.device_id.username, os_id.device_id.manage_ip,
                                                      os_id.device_id.password, command)
             dict = sw_parsing.show_spanning_tree_summary(child_config)
 
     elif os_id.software_id.manage_mode == 'ssh':
-        child = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
+        before = my_pexpect.ssh_command(os_id.device_id.username, os_id.device_id.manage_ip,
                                        os_id.device_id.password, command)
-        before = child.before
         dict = sw_parsing.show_mac_address_table_count(before)
     # for i in range(len(dict['stp_summary_totals'])):
     fields_dict = {
@@ -617,7 +603,7 @@ def create_mac_address_count(os_id):
 #     command = "show environment power"
 #     fields_dict_list = []
 #     if os_id.software_id.manage_mode == 'telnet':
-#         child_config = my_pexpect.telnet_command(os_id.device_id.username, os_id.device_id.manage_ip,
+#         child_config = my_pexpect.telnet_command_sw(os_id.device_id.username, os_id.device_id.manage_ip,
 #                                                  os_id.device_id.password, command)
 #         dict = sw_parsing_xml.show_environment_power(child_config)
 #
@@ -673,7 +659,7 @@ def create_mac_address_count(os_id):
 #
 #     if os_id.software_id.manage_mode == 'telnet':
 #         # command = command_b
-#         # child_config = my_pexpect.telnet_command(os_id.device_id.username, os_id.device_id.manage_ip,
+#         # child_config = my_pexpect.telnet_command_sw(os_id.device_id.username, os_id.device_id.manage_ip,
 #         #                                          os_id.device_id.password, command)
 #         dict = sw_parsing_xml.show_environment_fan()
 #

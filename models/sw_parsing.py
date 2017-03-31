@@ -91,12 +91,17 @@ def show_ip_interface_brief(before):
     protocol = []
     # 利用正则表达式获取需要信息的行
     for index ,line in enumerate(alllines):
-        if len(line)>1 and line.find('Interface') <0:
+        if index>0:
             list = re.split('\s+', line)
-            if list[-4] == 'administratively':
-                list[-4] = list[-4]+' '+list[-3]
-                list[-3] = list[-2]
-                list[-2] = ''
+            _logger = logging.getLogger(__name__)
+            _logger.info(list)
+            _logger.info('************************************************')
+            for i in range(len(list)):
+                _logger.info(list[i])
+            if list[4] == 'administratively':
+                list[4] = list[4]+' '+list[5]
+                list[5] = list[-1]
+                list[-1] = ''
             if '' in list:
                 list.remove('')
             if '' in list:
