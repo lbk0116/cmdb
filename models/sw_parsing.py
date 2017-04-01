@@ -18,7 +18,7 @@ def show_version(before):
     minutes = 0
     kickstart_image = ''
     bootflash_size = ''
-	# name=''
+    # name=''
     for line in alllines:
         if line:
             name_obj = re.search(r'.*(?=uptime)', line)
@@ -90,8 +90,8 @@ def show_ip_interface_brief(before):
     status = []
     protocol = []
     # 利用正则表达式获取需要信息的行
-    for index ,line in enumerate(alllines):
-        if index>0:
+    for index, line in enumerate(alllines):
+        if index and index < len(alllines):
             list = re.split('\s+', line)
             _logger = logging.getLogger(__name__)
             _logger.info(list)
@@ -128,7 +128,7 @@ def show_neighbor(before):
     use_line = []
     # 利用正则表达式获取需要信息的行
     for index,line in enumerate(alllines):
-        if line:
+        if line and index < len(alllines):
             if index <= start_index:
                 m = re.search('PORT ID',line,re.IGNORECASE)
                 if m:
@@ -188,7 +188,7 @@ def show_interface_trunk(before):
     allowed_lines = []
     # 利用正则表达式获取需要信息的行
     for index ,line in enumerate(alllines):
-        if len(line)>1:
+        if len(line) > 1 and index < len(alllines):
             if index < start_index1:
                 m = re.search('Native vlan\n',line,re.IGNORECASE)
                 if m:
@@ -349,7 +349,7 @@ def show_spanning_tree_summary(before):
     # 利用正则表达式获取需要信息的行
     stp_mode = []
     for index ,line in enumerate(alllines):
-        if len(line)>1:
+        if len(line)>1 and index < len(alllines):
             m = re.search('(?<=^switch is in).*(?= mode)',line,re.IGNORECASE)
             if m:
                 stp_mode.append(m.group().strip())
@@ -393,7 +393,7 @@ def show_spanning_tree_summary_total(before):
     #利用正则表达式获取需要信息的行
     total_logical_ports = []
     for index ,line in enumerate(alllines):
-        if len(line)>1:
+        if len(line)>1 and index < len(alllines):
             if index<=start_index:
                 m = re.search('STP Active',line,re.IGNORECASE)
                 if m:
@@ -419,7 +419,7 @@ def show_mac_address_table_count(before):
     dynamic_address_count=0
     counts=[]
     for index ,line in enumerate(alllines):
-        if len(line)>1:
+        if len(line)>1 and index < len(alllines):
             if index<=start_index:
                 m = re.search('(?<=^Dynamic Address Count)\s+:\s+[0-9]+',line,re.IGNORECASE)
                 if m:
@@ -440,7 +440,7 @@ def show_mac_address_table(before):
     use_lines = []
     # 利用正则表达式获取需要信息的行
     for index,line in enumerate(alllines):
-        if line:
+        if line and index < len(alllines):
             if index <= start_index and index < len(alllines)-3:
                 m = re.search('Vlan',line,re.IGNORECASE)
                 if m:
@@ -479,7 +479,7 @@ def show_ip_arp(before):
     use_line = []
     # 利用正则表达式获取需要信息的行
     for index,line in enumerate(alllines):
-        if line:
+        if line and index < len(alllines):
             if index <= start_index:
                 m = re.search('Interface',line,re.IGNORECASE)
                 if m:
@@ -514,12 +514,12 @@ def show_interface_status(before):
     use_lines = []
     use_line = []
     # 利用正则表达式获取需要信息的行
-    for inddex ,line in enumerate(alllines):
-        if line:
-            if inddex < start_index:
+    for index ,line in enumerate(alllines):
+        if line and index < len(alllines):
+            if index < start_index:
                 m = re.search('Port',line,re.IGNORECASE)
                 if m:
-                    start_index = inddex
+                    start_index = index
                     continue
             else:
                 # use_lines.append(re.findall(
